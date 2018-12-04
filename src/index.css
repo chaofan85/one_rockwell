@@ -1,14 +1,68 @@
-body {
+/*
+ Instructions:
+ Check "answer-preview-image.png" for the final look of the expected result
+ Check "answer-detailed-guidelines.png" for detailed requirements, note that we have 3 special requirements:
+
+1) as the window is resized, keep the image centered
+2) maintain the image ratio (the text box ratio may change)
+3) the image should not be cut off in any size window
+
+ Check "answer-preview-video.mov" for visual requirements when the window is resized. NOTE: resizing the window will cause the viewport ratio to change. The affects scaling, height, and width of content. Please compare the video to the detailed guidelines.
+*/
+
+/*Reset CSS*/
+body,
+html {
   margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #efefef;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+h1 {
+  margin-bottom: 20px;
+}
+img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/*Base Style*/
+
+.container {
+  display: block;
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin: 0px;
+  background: white;
+}
+.text-block {
+  width: 37.645448%;
+  background: #e3e3e3;
+  flex-grow: 1;
+  display: table;
+}
+.text-wrapper {
+  margin: 0 10%;
+  overflow: auto;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.image-block {
+}
+
+.image-container {
+  width: auto;
 }

@@ -10,27 +10,20 @@ class App extends Component {
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
       imgWidth: window.innerWidth - 2 * ((window.innerWidth * 37.645448) / 100),
-      imgHeight: 0,
-      textHeight: (((window.innerWidth * 37.645448) / 100) * 5) / 3,
+      imgHeight:
+        ((window.innerWidth - 2 * ((window.innerWidth * 37.645448) / 100)) *
+          5) /
+        3,
+      textHeight:
+        ((window.innerWidth - 2 * ((window.innerWidth * 37.645448) / 100)) *
+          5) /
+        3,
       textWidth: (window.innerWidth * 37.645448) / 100
     };
     this.updateSizes = this.updateSizes.bind(this);
   }
 
   componentDidMount() {
-    // let height = $(".image-block").height();
-    // let width = $(".image-block").width();
-
-    // let imageWidth = window.innerHeight - 2 * $(".text-block").width();
-    // let imageHeight = (imageWidth * 5) / 3;
-    // let txtWidth = (window.innerWidth * 37.645448) / 100;
-    // this.setState({
-    //   // textWidth: width / 2
-    //   imgWidth: imageWidth,
-    //   imgHeight: imageHeight,
-    //   textWidth: txtWidth,
-    //   textHeight: imageHeight
-    // });
     window.addEventListener("resize", this.updateSizes);
   }
 
@@ -39,13 +32,16 @@ class App extends Component {
   }
 
   updateSizes() {
-    // console.log(window.innerWidth, window.innerHeight);
-    let txtWidth = (this.state.windowWidth * 37.645448) / 100;
-    let imageWidth = this.state.windowWidth - 2 * txtWidth;
+    let txtWidth = (window.innerWidth * 37.645448) / 100;
+    let imageWidth = window.innerWidth - 2 * txtWidth;
     let imageHeight = (imageWidth * 5) / 3;
-    // console.log(txtWidth, imgWidth, imgHeight);
 
-    // console.log(imageWidth, imageHeight, txtWidth, window.innerWidth);
+    if (window.innerHeight < imageHeight) {
+      imageHeight = window.innerHeight;
+      imageWidth = imageHeight * 0.6;
+      txtWidth = (window.innerWidth - imageWidth) / 2;
+    }
+
     this.setState({
       windowHeight: window.innerHeight,
       windowWidth: window.innerWidth,
@@ -57,16 +53,16 @@ class App extends Component {
   }
 
   render() {
-    // let txtWidth = (this.state.windowWidth * 37.645448) / 100;
-    // let imageWidth = this.state.windowWidth - 2 * txtWidth;
-    // let imageHeight = (imageWidth * 5) / 3;
     return (
-      <div className="container">
+      <div className="container " style={{ maxHeight: this.state.imgHeight }}>
         <div
           className="text-block text-block-one"
           style={{ width: this.state.textWidth, height: this.state.textHeight }}
         >
-          <div className="text-wrapper">
+          <div
+            className="text-wrapper"
+            style={{ maxHeight: this.state.textHeight }}
+          >
             <h1>Hellow World</h1>
             <h3>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -89,8 +85,11 @@ class App extends Component {
           className="text-block text-block-two"
           style={{ width: this.state.textWidth, height: this.state.textHeight }}
         >
-          <div className="text-wrapper">
-            <h3>
+          <div
+            className="text-wrapper"
+            style={{ maxHeight: this.state.textHeight }}
+          >
+            <h3 style={{ maxHeight: this.state.textHeight }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris

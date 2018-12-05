@@ -45,19 +45,28 @@ img {
   width: 100%;
   margin: 0px;
   background: white;
+  overflow-y: hidden;
 }
 .text-block {
   width: 37.645448%;
   background: #e3e3e3;
   flex-grow: 1;
   display: table;
+  padding: 0 3%;
 }
 .text-wrapper {
   margin: 0 10%;
-  overflow: auto;
+  overflow-y: scroll;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+}
+
+.text-wrapper h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  table-layout: fixed;
+  display: block;
 }
 
 .image-block {

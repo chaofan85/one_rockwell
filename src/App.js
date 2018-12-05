@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import $ from "jquery";
 import image from "./450x750.png";
 import "./App.css";
 
